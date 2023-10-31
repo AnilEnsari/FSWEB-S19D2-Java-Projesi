@@ -4,16 +4,20 @@ package com.example.worktintechspring.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
 
-@Data
+
 @NoArgsConstructor
+@Data
 @Entity
 @Table(name = "member", schema = "fsweb")
-public class Role {
+public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
     private long id;
     @Column (name = "authority")
     private String authority;
+
+
 }

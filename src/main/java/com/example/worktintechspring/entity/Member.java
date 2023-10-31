@@ -4,17 +4,17 @@ package com.example.worktintechspring.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 @Data
 @NoArgsConstructor
 @Entity
 @Table(name="member",schema = "fsweb")
 
-public class Member {
+public class Member implements UserDetails {
    @Id
 @GeneratedValue(strategy = GenerationType.IDENTITY)
    @Column(name = "id")
@@ -29,5 +29,33 @@ public class Member {
    @JoinTable(name= "member_role",schema ="fsweb",
            joinColumns = @JoinColumn(name ="member_id"),
            inverseJoinColumns = @JoinColumn(name = "role_id"))
-  private List<Role> authorityList ;
+  private List<Role> authorities = new ArrayList<>();
+
+
+
+
+    @Override
+   public String getUsername() {
+      return email;
+   }
+
+   @Override
+   public boolean isAccountNonExpired() {
+      return true;
+   }
+
+   @Override
+   public boolean isAccountNonLocked() {
+      return true;
+   }
+
+   @Override
+   public boolean isCredentialsNonExpired() {
+      return true;
+   }
+
+   @Override
+   public boolean isEnabled() {
+      return true;
+   }
 }
