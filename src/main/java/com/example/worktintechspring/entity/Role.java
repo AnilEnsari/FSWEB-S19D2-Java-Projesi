@@ -10,12 +10,12 @@ import org.springframework.security.core.GrantedAuthority;
 @NoArgsConstructor
 @Data
 @Entity
-@Table(name = "member", schema = "fsweb")
+@Table(name = "role", schema = "fsweb")
 public class Role implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column (name = "id")
-    private long id;
+    private Long id;
     @Column (name = "authority")
     private String authority;
 

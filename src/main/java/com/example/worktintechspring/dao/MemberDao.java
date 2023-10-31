@@ -8,7 +8,7 @@ import java.util.Optional;
 
 public interface MemberDao extends JpaRepository<Member,Long> {
 
-    @Query(value = "SELECT m.id,m.email,m.password from fsweb.member as m WHERE m.email=:email",nativeQuery = true)
+    @Query("SELECT m FROM Member m WHERE m.email=:email")
     Optional<Member> findByEmail(String email);
 
 }

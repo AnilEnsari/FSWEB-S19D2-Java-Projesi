@@ -1,6 +1,7 @@
 package com.example.worktintechspring.controller;
 
 
+import com.example.worktintechspring.dto.RegisterRequest;
 import com.example.worktintechspring.entity.Member;
 import com.example.worktintechspring.service.MemberService;
 import com.example.worktintechspring.service.RoleService;
@@ -22,7 +23,7 @@ public class RoleController {
 
 
     @PostMapping("/register")
-    public Member register (@RequestBody String email, @RequestBody String password){
-      return  roleService.register(email, password);
+    public Member register (@RequestBody RegisterRequest registerRequest){
+      return  roleService.register(registerRequest.email(), registerRequest.password());
     }
 }

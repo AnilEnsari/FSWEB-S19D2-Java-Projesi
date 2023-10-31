@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.Optional;
 
 public interface RoleDao extends JpaRepository <Role,Long>{
-    @Query(value = "SELECT r.authority,r.id FROM r WHERE r.authority=:authority")
+    @Query("SELECT r FROM Role r WHERE r.authority=:authority")
      Optional<Role> findByAuthority(String authority);
 }

@@ -25,12 +25,11 @@ public class SecurityConfig {
                     auth.requestMatchers("/auth/**").permitAll();
                     auth.requestMatchers(HttpMethod.POST,"/account/**").hasAuthority("ADMIN");
                     auth.requestMatchers(HttpMethod.PUT,"/account/**").hasAuthority("ADMIN");
-                    auth.requestMatchers(HttpMethod.DELETE,"/accout/**").hasAuthority("ADMIN");
+                    auth.requestMatchers(HttpMethod.DELETE,"/account/**").hasAuthority("ADMIN");
                     auth.anyRequest().authenticated();
                 })
                 .formLogin(Customizer.withDefaults())
-                .httpBasic(Customizer.withDefaults())
-                .oauth2Login(Customizer.withDefaults())
+        //[TODO] ask !!! this line.        .httpBasic(Customizer.withDefaults())
                 .build();
 
     }
